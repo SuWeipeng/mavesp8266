@@ -300,6 +300,9 @@ MavESP8266Component::_handleCmdLong(MavESP8266Bridge* sender, mavlink_command_lo
             &msg,
             cmd->command,
             result
+#if MAVLINK_VER == 2
+	    ,0,0,0,0
+#endif
         );
         sender->sendMessage(&msg);
     }

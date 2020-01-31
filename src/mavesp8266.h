@@ -43,7 +43,13 @@
 #include <WiFiUdp.h>
 
 #undef F
+#define MAVLINK_VER 1
+
+#if MAVLINK_VER == 1
 #include <car/mavlink.h>
+#elif MAVLINK_VER == 2
+#include <ardupilotmega/mavlink.h>
+#endif
 
  extern "C" {
     // Espressif SDK

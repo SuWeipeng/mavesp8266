@@ -203,15 +203,15 @@ MavESP8266Vehicle::_readMessage()
                     _checkLinkErrors(&_message[_queue_count]);
                 }
 
-                /*
+#if MAVLINK_VER == 2
                 if (msgReceived == MAVLINK_FRAMING_BAD_CRC ||
                     msgReceived == MAVLINK_FRAMING_BAD_SIGNATURE) {
                     // we don't process messages locally with bad CRC,
                     // but we do forward them, so when new messages
                     // are added we can bridge them
                     break;
-                }*/
-
+                }
+#endif
                 //-- Check for message we might be interested
                 if(getWorld()->getComponent()->handleMessage(this, &_message[_queue_count])){
                     //-- Eat message (don't send it to GCS)
