@@ -128,13 +128,14 @@ MavESP8266GCS::_readMessage()
                         _checkLinkErrors(&_message);
                     }
 
+                    /*
                     if (msgReceived == MAVLINK_FRAMING_BAD_CRC ||
                         msgReceived == MAVLINK_FRAMING_BAD_SIGNATURE) {
                         // we don't process messages locally with bad CRC,
                         // but we do forward them, so when new messages
                         // are added we can bridge them
                         break;
-                    }
+                    }*/
 
                     //-- Check for message we might be interested
                     if(getWorld()->getComponent()->handleMessage(this, &_message)){
